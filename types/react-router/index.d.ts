@@ -50,7 +50,7 @@ export interface MemoryRouterProps {
 export class MemoryRouter extends React.Component<MemoryRouterProps, any> {}
 
 export interface PromptProps {
-    message: string | ((location: H.Location, action: H.Action) => string | boolean);
+    message: string | ((location: H.Location) => string | boolean);
     when?: boolean;
 }
 export class Prompt extends React.Component<PromptProps, any> {}

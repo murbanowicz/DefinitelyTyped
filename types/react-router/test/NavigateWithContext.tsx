@@ -16,12 +16,9 @@ class ComponentThatUsesContext extends React.Component<Props> {
     context = {} as RouterChildContext<Params>;
 
     private readonly onClick = () => {
-        const {
-            history,
-            route: { location, match },
-        } = this.context.router;
+        const { history } = this.context.router;
         history.push('/some/url');
-    };
+    }
 
     render() {
         return <div />;

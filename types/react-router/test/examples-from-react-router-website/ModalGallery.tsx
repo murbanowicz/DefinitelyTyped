@@ -109,7 +109,7 @@ const Gallery = () => (
 
 const ImageView: React.FunctionComponent = () => {
     const { id } = useParams();
-    const image = IMAGES[parseInt(id!, 10)];
+    const image = IMAGES[parseInt(id, 10)];
     if (!image) {
         return <div>Image not found</div>;
     }

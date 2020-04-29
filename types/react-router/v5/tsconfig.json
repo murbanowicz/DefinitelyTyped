@@ -10,6 +10,9 @@
             "es6",
             "dom"
         ],
+        "paths": {
+            "react-router": [ "react-router/v5"]
+        },
         "jsx": "react",
         "strictNullChecks": true,
         "strictFunctionTypes": false,

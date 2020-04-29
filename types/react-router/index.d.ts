@@ -112,7 +112,6 @@ export interface StaticRouterProps {
 
 export class StaticRouter extends React.Component<StaticRouterProps, any> {}
 
-
 export interface match<Params extends { [K in keyof Params]?: string } = {}> {
     params: Params;
     isExact: boolean;
@@ -158,9 +157,9 @@ export type Destination =
 | string
 | number
 | Partial<{
-    pathname: String;
-    search: String;
-    hash: String;
+    pathname: string;
+    search: string;
+    hash: string;
   }>;
 
 export function useNavigate(): (

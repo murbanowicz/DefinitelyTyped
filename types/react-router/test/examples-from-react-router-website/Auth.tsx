@@ -1,13 +1,14 @@
 import * as React from 'react';
 import {
-  BrowserRouter as Router,
-  RouteComponentProps,
-  RouteProps,
-  Route,
-  Link,
-  withRouter
+    BrowserRouter as Router,
+    RouteComponentProps,
+    RouteProps,
+    Route,
+    Link,
+    withRouter, useNavigate,
 } from 'react-router-dom';
 import { StaticContext } from 'react-router';
+import { useState } from 'react';
 
 ////////////////////////////////////////////////////////////
 // 1. Click the public page
@@ -54,50 +55,45 @@ const AuthButton = withRouter(({ history }) => (
   )
 ));
 
-const PrivateRoute: React.FunctionComponent<RouteProps> = ({ component, ...rest }) => (
-  <Route {...rest} render={props => (
-    fakeAuth.isAuthenticated ? React.createElement(component! as React.FunctionComponent<any>, props) : (
-      <Redirect to={{
-        pathname: '/login',
-        state: { from: props.location }
-      }}/>
-    )
-  )}/>
-);
+const PrivateRoute: React.FunctionComponent<RouteProps> = ({ element, ...rest }) => {
+    const navigate = useNavigate();
+
+    if(!fakeAuth.isAuthenticated) {
+        navigate('/login', {state: {from: rest.location}})
+    }
+    return (
+        <Route {...rest} render={props => (
+            React.createElement(element as React.FunctionComponent<any>, props)
+        )}/>
+    );
+}
 
 const Public: React.FunctionComponent<RouteComponentProps> = () => <h3>Public</h3>;
 const Protected: React.FunctionComponent<RouteComponentProps> = () => <h3>Protected</h3>;
 
 type Props = RouteComponentProps<{}, StaticContext, { from: { pathname: string; }; }>;
 
-class Login extends React.Component<Props, {redirectToReferrer: boolean}> {
-  state = {
-    redirectToReferrer: false
-  };
 
-  login = () => {
-    fakeAuth.authenticate(() => {
-      this.setState({ redirectToReferrer: true });
-    });
-  }
+const Login :React.FunctionComponent<Props> = ({location}) => {
+    const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+    const { from } = location.state || { from: { pathname: '/' } };
+    const login = () => {
+        fakeAuth.authenticate(() => {
+            setRedirectToReferrer(true)
+        });
+    }
 
-  render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
-    const { redirectToReferrer } = this.state;
-
+    const navigate = useNavigate();
     if (redirectToReferrer) {
-      return (
-        <Redirect to={from}/>
-      );
+        navigate(from);
     }
 
     return (
-      <div>
-        <p>You must log in to view the page at {from.pathname}</p>
-        <button onClick={this.login}>Log in</button>
-      </div>
-    );
-  }
+        <div>
+            <p>You must log in to view the page at {from.pathname}</p>
+            <button onClick={login}>Log in</button>
+        </div>
+    )
 }
 
 export default AuthExample;

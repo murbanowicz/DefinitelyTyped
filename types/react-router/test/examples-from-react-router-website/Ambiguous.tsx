@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  BrowserRouter as Router,
-  RouteComponentProps,
-  Route,
-  Link,
-  Routes,
-  useParams
-} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Routes, useParams } from 'react-router-dom';
 
 const AmbiguousExample = () => (
   <Router>

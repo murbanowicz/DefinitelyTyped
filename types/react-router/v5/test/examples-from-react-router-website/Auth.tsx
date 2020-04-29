@@ -5,6 +5,7 @@ import {
   RouteProps,
   Route,
   Link,
+  Redirect,
   withRouter
 } from 'react-router-dom';
 import { StaticContext } from 'react-router';

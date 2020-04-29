@@ -5,7 +5,8 @@ import {
   RouteComponentProps,
   Route,
   LinkProps,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 
 /* you'll need this CSS somewhere

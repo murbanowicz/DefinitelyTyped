@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   RouteComponentProps,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom';
 
 const AmbiguousExample = () => (

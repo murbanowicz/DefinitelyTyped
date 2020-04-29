@@ -4,6 +4,8 @@ import {
   RouteComponentProps,
   Route,
   Link,
+  Switch,
+  Redirect
 } from 'react-router-dom';
 
 const NoMatchExample = () => (

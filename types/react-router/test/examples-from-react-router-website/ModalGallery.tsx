@@ -26,7 +26,8 @@ const ModalSwitch: React.FunctionComponent = () => {
     const [previousLocation, setPreviousLocation] = useState(location);
 
     useEffect(() => {
-        if (history.action !== 'POP' && (!location.state || !location.state.modal)) {
+        // history.action !== 'POP' && has been removed. No idea how to make it work with v6
+        if (!location.state || !location.state.modal) {
             setPreviousLocation(location);
         }
     });

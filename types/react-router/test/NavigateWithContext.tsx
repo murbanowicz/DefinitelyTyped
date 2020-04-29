@@ -22,6 +22,7 @@ class ComponentThatUsesContext extends React.Component<Props> {
         } = this.context.router;
         history.push('/some/url');
     };
+
     render() {
         return <div />;
     }

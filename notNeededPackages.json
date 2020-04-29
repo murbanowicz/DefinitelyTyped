@@ -3652,7 +3652,7 @@
             "libraryName": "postcss-nested",
             "typingsPackageName": "postcss-nested",
             "sourceRepoURL": "https://github.com/postcss/postcss-nested",
-            "asOfVersion": "4.2.3"
+            "asOfVersion": "4.2.4"
         },
         {
             "libraryName": "postmark",

@@ -2,7 +2,7 @@
     "compilerOptions": {
         "baseUrl": "../../",
         "typeRoots": [
-            "../"
+            "../../"
         ],
         "types": [],
         "module": "commonjs",

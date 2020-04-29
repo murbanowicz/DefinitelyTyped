@@ -13,6 +13,9 @@
         "typeRoots": [
             "../"
         ],
+        "paths": {
+            "react-router": [ "react-router/v5"]
+        },
         "types": [],
         "noEmit": true,
         "forceConsistentCasingInFileNames": true,

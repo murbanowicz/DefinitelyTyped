@@ -78,9 +78,7 @@ export interface RouteChildrenProps<Params extends { [K in keyof Params]?: strin
 
 export interface RouteProps {
     location?: H.Location;
-    element?:
-        | ((props: RouteChildrenProps<any>) => React.ReactNode)
-        | React.ReactNode;
+    element?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode;
     render?: (props: RouteComponentProps<any>) => React.ReactNode;
     path?: string | string[];
     exact?: boolean;
@@ -154,18 +152,15 @@ export const __RouterContext: React.Context<RouteComponentProps>;
 export function useLocation<S = H.LocationState>(): H.Location<S>;
 
 export type Destination =
-| string
-| number
-| Partial<{
-    pathname: string;
-    search: string;
-    hash: string;
-  }>;
+    | string
+    | number
+    | Partial<{
+          pathname: string;
+          search: string;
+          hash: string;
+      }>;
 
-export function useNavigate(): (
-    path: Destination,
-    config?: Partial<{ replace: boolean; state: object }>
-) => void;
+export function useNavigate(): (path: Destination, config?: Partial<{ replace: boolean; state: object }>) => void;
 
 export function useParams<Params extends { [K in keyof Params]?: string } = {}>(): Params;
 

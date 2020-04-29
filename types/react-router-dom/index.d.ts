@@ -57,6 +57,7 @@ export interface LinkProps<S = H.LocationState> extends React.AnchorHTMLAttribut
     replace?: boolean;
     innerRef?: React.Ref<HTMLAnchorElement>;
 }
+
 export function Link<S = H.LocationState>(
     // TODO: Define this as ...params: Parameters<Link<S>> when only TypeScript >= 3.1 support is needed.
     props: React.PropsWithoutRef<LinkProps<S>> & React.RefAttributes<HTMLAnchorElement>,
@@ -71,7 +72,10 @@ export interface NavLinkProps<S = H.LocationState> extends LinkProps<S> {
     activeStyle?: React.CSSProperties;
     exact?: boolean;
     strict?: boolean;
-    isActive?<Params extends { [K in keyof Params]?: string }>(match: match<Params> | null, location: H.Location<S>): boolean;
+    isActive?<Params extends { [K in keyof Params]?: string }>(
+        match: match<Params> | null,
+        location: H.Location<S>,
+    ): boolean;
     location?: H.Location<S>;
 }
 export function NavLink<S = H.LocationState>(

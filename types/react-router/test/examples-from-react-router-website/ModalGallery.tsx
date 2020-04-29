@@ -46,10 +46,10 @@ class ModalSwitch extends React.Component<Props> {
 
   render() {
     const { location } = this.props;
-    const isModal = !!(
-      location.state &&
-      location.state.modal &&
-      this.previousLocation !== location // not initial render
+    const isModal = (
+        location.state &&
+        location.state.modal &&
+        this.previousLocation !== location // not initial render
     );
     return (
       <div>
@@ -83,8 +83,8 @@ const Image: React.FunctionComponent<{ color: string }> = ({ color }) =>
   <div style={{
     width: '100%',
     height: 400,
-    background: color
-  }}></div>;
+    background: color,
+}}/>;
 
 const Home = () => (
   <div>
@@ -171,7 +171,7 @@ const Modal: React.FunctionComponent<RouteComponentProps<{ id: string }>> = ({ m
 
 const ModalGallery = () => (
   <Router>
-    <Route component={ModalSwitch} />
+    <Route element={<ModalSwitch/>} />
   </Router>
 );
 

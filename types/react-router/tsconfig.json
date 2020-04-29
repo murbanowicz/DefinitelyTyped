@@ -38,8 +38,6 @@
         "test/hooks.tsx",
         "test/NavigateWithContext.tsx",
         "test/MemoryRouter.tsx",
-        "test/Prompt.tsx",
-        "test/Switch.tsx",
         "test/InheritingRoute.tsx",
         "test/WithRouter.tsx",
         "test/RouterContext.tsx"

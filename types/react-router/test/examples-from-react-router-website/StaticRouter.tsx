@@ -8,18 +8,14 @@ interface RouteStatusProps {
     statusCode: number;
 }
 
-const RouteStatus: React.FunctionComponent<RouteStatusProps> = (props) => (
+const RouteStatus: React.FunctionComponent<RouteStatusProps> = props => (
     <Route
-        render={({ staticContext }: {staticContext?: StaticContext}) => {
+        render={({ staticContext }: { staticContext?: StaticContext }) => {
             if (staticContext) {
                 staticContext.statusCode = props.statusCode;
             }
 
-            return (
-                <div>
-                    {props.children}
-                </div>
-            );
+            return <div>{props.children}</div>;
         }}
     />
 );
@@ -28,10 +24,8 @@ interface PrintContextProps {
     staticContext: StaticContext;
 }
 
-const PrintContext: React.FunctionComponent<PrintContextProps> = (props) => (
-    <p>
-        Static context: {JSON.stringify(props.staticContext)}
-    </p>
+const PrintContext: React.FunctionComponent<PrintContextProps> = props => (
+    <p>Static context: {JSON.stringify(props.staticContext)}</p>
 );
 
 class StaticRouterExample extends React.Component {
@@ -59,7 +53,7 @@ app.get('*', (req, res) => {
     const html = renderToString(
         <StaticRouter location={req.url} context={staticContext}>
             (includes the RouteStatus component below e.g. for 404 errors)
-        </StaticRouter>
+        </StaticRouter>,
     );
 
     res.status(staticContext.statusCode || 200).send(html);

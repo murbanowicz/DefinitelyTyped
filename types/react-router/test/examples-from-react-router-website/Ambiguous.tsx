@@ -2,16 +2,24 @@ import * as React from 'react';
 import { BrowserRouter as Router, Link, Route, Routes, useParams } from 'react-router-dom';
 
 const AmbiguousExample = () => (
-  <Router>
-    <div>
-      <ul>
-        <li><Link to="/about">About Us (static)</Link></li>
-        <li><Link to="/company">Company (static)</Link></li>
-        <li><Link to="/kim">Kim (dynamic)</Link></li>
-        <li><Link to="/chris">Chris (dynamic)</Link></li>
-      </ul>
+    <Router>
+        <div>
+            <ul>
+                <li>
+                    <Link to="/about">About Us (static)</Link>
+                </li>
+                <li>
+                    <Link to="/company">Company (static)</Link>
+                </li>
+                <li>
+                    <Link to="/kim">Kim (dynamic)</Link>
+                </li>
+                <li>
+                    <Link to="/chris">Chris (dynamic)</Link>
+                </li>
+            </ul>
 
-      {/*
+            {/*
           Sometimes you want to have a whitelist of static paths
           like "/about" and "/company" but also allow for dynamic
           patterns like "/:user". The problem is that "/about"
@@ -24,25 +32,26 @@ const AmbiguousExample = () => (
           "/about" to "/:user", just wrap your <Route>s in a
           <Switch>. It will render the first one that matches.
       */}
-      <Routes>
-        <Route path="/about" element={<About/>}/>
-        <Route path="/company" element={<Company/>}/>
-        <Route path="/:user" element={<User />}/>
-      </Routes>
-    </div>
-  </Router>
+
+            <Routes>
+                <Route path="/about" element={<About />} />
+                <Route path="/company" element={<Company />} />
+                <Route path="/:user" element={<User />} />
+            </Routes>
+        </div>
+    </Router>
 );
 
 const About = () => <h2>About</h2>;
 const Company = () => <h2>Company</h2>;
 const User: React.FunctionComponent = () => {
-    const {user} = useParams();
+    const { user } = useParams();
 
     return (
         <div>
             <h2>User: {user}</h2>
         </div>
     );
-}
+};
 
 export default AmbiguousExample;

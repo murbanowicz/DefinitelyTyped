@@ -11,7 +11,8 @@
             "dom"
         ],
         "paths": {
-            "react-router": [ "react-router/v5"]
+            "react-router": [ "react-router/v5"],
+            "react-router-dom": [ "react-router-dom/v5"]
         },
         "jsx": "react",
         "strictNullChecks": true,

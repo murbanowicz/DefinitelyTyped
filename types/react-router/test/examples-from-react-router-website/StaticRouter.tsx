@@ -1,14 +1,14 @@
-import * as React from 'react';
 import * as express from 'express';
+import * as React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter, Route } from 'react-router-dom';
 import { StaticContext, StaticRouterContext } from 'react-router';
+import { Route, StaticRouter } from 'react-router-dom';
 
 interface RouteStatusProps {
     statusCode: number;
 }
 
-const RouteStatus: React.SFC<RouteStatusProps> = (props) => (
+const RouteStatus: React.FunctionComponent<RouteStatusProps> = (props) => (
     <Route
         render={({ staticContext }: {staticContext?: StaticContext}) => {
             if (staticContext) {
@@ -28,7 +28,7 @@ interface PrintContextProps {
     staticContext: StaticContext;
 }
 
-const PrintContext: React.SFC<PrintContextProps> = (props) => (
+const PrintContext: React.FunctionComponent<PrintContextProps> = (props) => (
     <p>
         Static context: {JSON.stringify(props.staticContext)}
     </p>

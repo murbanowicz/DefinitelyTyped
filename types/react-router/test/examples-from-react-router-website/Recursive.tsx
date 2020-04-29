@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  BrowserRouter as Router,
-  RouteComponentProps,
-  Route,
-  Link,
-  match
-} from 'react-router-dom';
-import * as H from 'history';
+import { BrowserRouter as Router, Link, Route, RouteComponentProps } from 'react-router-dom';
 
 const PEEPS = [
   { id: 0, name: 'Michelle', friends: [ 1, 2, 3 ] },
@@ -38,7 +31,7 @@ interface InitialPersonProps {
 
 type PersonProps = RouteComponentProps<{ id: string }>;
 
-const Person: React.SFC<InitialPersonProps | PersonProps> = ({ match }) => {
+const Person: React.FunctionComponent<InitialPersonProps | PersonProps> = ({ match }) => {
   const person = find(match.params.id);
 
   return (
@@ -53,7 +46,7 @@ const Person: React.SFC<InitialPersonProps | PersonProps> = ({ match }) => {
           </li>
         ))}
       </ul>
-      <Route path={`${match.url}/:id`} component={Person as React.SFC<PersonProps>}/>
+      <Route path={`${match.url}/:id`} component={Person as React.FunctionComponent<PersonProps>}/>
     </div>
   );
 };

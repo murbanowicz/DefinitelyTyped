@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  BrowserRouter as Router,
-  RouteComponentProps,
-  Route,
-  Link,
-  Prompt
-} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Prompt, Route } from 'react-router-dom';
 
 const PreventingTransitionsExample = () => (
   <Router>

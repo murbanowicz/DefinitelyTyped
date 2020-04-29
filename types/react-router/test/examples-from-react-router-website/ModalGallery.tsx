@@ -72,14 +72,14 @@ const IMAGES = [
   { id: 4, title: 'Crimson', color: 'Crimson' }
 ];
 
-const Thumbnail: React.SFC<{ color: string }> = ({ color }) =>
+const Thumbnail: React.FunctionComponent<{ color: string }> = ({ color }) =>
   <div style={{
     width: 50,
     height: 50,
     background: color
   }} />;
 
-const Image: React.SFC<{ color: string }> = ({ color }) =>
+const Image: React.FunctionComponent<{ color: string }> = ({ color }) =>
   <div style={{
     width: '100%',
     height: 400,
@@ -115,7 +115,7 @@ const Gallery = () => (
   </div>
 );
 
-const ImageView: React.SFC<RouteComponentProps<{ id: string }>> = ({ match }) => {
+const ImageView: React.FunctionComponent<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const image = IMAGES[parseInt(match.params.id, 10)];
   if (!image) {
     return <div>Image not found</div>;
@@ -129,7 +129,7 @@ const ImageView: React.SFC<RouteComponentProps<{ id: string }>> = ({ match }) =>
   );
 };
 
-const Modal: React.SFC<RouteComponentProps<{ id: string }>> = ({ match, history }) => {
+const Modal: React.FunctionComponent<RouteComponentProps<{ id: string }>> = ({ match, history }) => {
   const image = IMAGES[parseInt(match.params.id, 10)];
   if (!image) {
     return null;

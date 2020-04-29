@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  BrowserRouter as Router,
-  RouteComponentProps,
-  RouteProps,
-  Route,
-  Link
-} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, RouteComponentProps, RouteProps } from 'react-router-dom';
 
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
@@ -21,7 +15,7 @@ interface PropsWithRoutes extends RouteComponentProps {
   routes: MyRouteProps[];
 }
 
-const Tacos: React.SFC<PropsWithRoutes> = ({ routes }) => (
+const Tacos: React.FunctionComponent<PropsWithRoutes> = ({ routes }) => (
   <div>
     <h2>Tacos</h2>
     <ul>
@@ -41,7 +35,7 @@ const Cart = () => <h3>Cart</h3>;
 ////////////////////////////////////////////////////////////
 // then our route config
 interface MyRouteProps extends RouteProps {
-  component: React.SFC<PropsWithRoutes>;
+  component: React.FunctionComponent<PropsWithRoutes>;
   routes?: MyRouteProps[];
 }
 const routes: MyRouteProps[] = [
